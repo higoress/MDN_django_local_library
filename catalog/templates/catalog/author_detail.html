@@ -1,0 +1,25 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Author: {{ author.last_name }}, {{author.first_name}}</h1>
+  <p>{{ author.last_name }}, {{author.first_name}} ({{author.date_of_birth}} - 
+    {% if author.date_of_death %}
+        {{author.date_of_death}}
+    {% endif %} )</p> 
+
+    {% if perms.catalog.can_mark_returned %}
+      <a class="text-warning" href="{{request.path}}/update/">Update</a>
+      <a class="text-danger"  href="{{request.path}}/delete/">Delete</a>
+      <hr>
+    {% endif %}
+  
+  <div style="margin-left:20px;margin-top:20px">
+    <h4>Books</h4>
+
+    {% for book in author.book_set.all %}
+      <hr>
+      <a href="{{book.get_absolute_url}}">{{book}}</a> <strong>({{book.bookinstance_set.count}})</strong>
+      <p>{{book.summary}}</p>
+    {% endfor %}
+  
+{% endblock %}
