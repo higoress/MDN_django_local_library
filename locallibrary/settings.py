@@ -27,7 +27,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'i+8hc=j5ll=4blo!i17d@@s_)wjbpo
 #DEBUG = True
 DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['frozen-tor-22970.herokuapp.com', '127.0.0.1']
 
 
 
